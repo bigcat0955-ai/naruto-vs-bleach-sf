@@ -6,8 +6,7 @@ public class DeadZone : MonoBehaviour
     {
         if (collision.tag == "Target" || collision.tag == "Player")
         {
-            Time.timeScale = 0; // Pause the game
-            Debug.Log("Game Over");
+            UI.Instance.OpenEndScreen();
 
         }
     }

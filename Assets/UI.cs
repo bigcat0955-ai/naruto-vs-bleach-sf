@@ -1,5 +1,7 @@
 using TMPro;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -7,7 +9,7 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI ammoText;
-
+    [SerializeField] private GameObject tryAgainButton;
     private int scoreValue;
 
 
@@ -33,9 +35,21 @@ public class UI : MonoBehaviour
         scoreValue++;
         scoreText.text = scoreValue.ToString("#,#");
     }
-    
+
     public void UpdateAmmo(int currenBullets, int maxBullets)
     {
         ammoText.text = currenBullets + "/" + maxBullets;
+    }
+
+
+    public void OpenEndScreen()
+    {
+        Time.timeScale = 0;
+        tryAgainButton.SetActive(true);
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 }
